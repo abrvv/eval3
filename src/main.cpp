@@ -24,9 +24,15 @@ float calculerTempsRecharge(float capacite, float puissance){
   return (capacite/puissance)*60;
 }
 
+void modifierBorne(float dist[], int indiceBorne, float nouvelleDist){
+  
+  dist[indiceBorne]=nouvelleDist;
+}
+
 int main() {
   int borne = 0;
   float capacite = 0.0;
+  int newDist=0;
   float puissances[5] = {50.0, 22.0, 11.0, 150.0, 7.4};
   float distances[5] = {12.5, 35.0, 8.0, 60.0, 2.3};
 
@@ -37,6 +43,10 @@ int main() {
   cout << "Quelle est la capacité du véhicule ? "; cin >> capacite;
   cout << "Le temps de recharge est estimé à : "<< calculerTempsRecharge(capacite,puissances[borne-1]) 
     << " min. \n";
+  cout << "Quelle borne souhaitez vous modifier la distance ? ";cin >> borne;
+  cout << "Quelle distance ?"; cin >> newDist;
+  modifierBorne(distances, borne-1, newDist);
+  cout << "Changement: " << distances[borne-1] << " km ";
 
   return 0;
 }
