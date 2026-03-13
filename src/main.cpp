@@ -20,13 +20,23 @@ int indiceBorneLaPlusProche(const float dist[], int taille) {
   return indice;
 }
 
+float calculerTempsRecharge(float capacite, float puissance){
+  return (capacite/puissance)*60;
+}
+
 int main() {
+  int borne = 0;
+  float capacite = 0.0;
   float puissances[5] = {50.0, 22.0, 11.0, 150.0, 7.4};
   float distances[5] = {12.5, 35.0, 8.0, 60.0, 2.3};
 
   afficherBornes(puissances, distances, 5);
   cout << "La borne la plus proche est la borne :"
        << indiceBorneLaPlusProche(distances, 5)+1 << "\n";
+  cout << "Quelle borne souhaitez vous utiliser ? "; cin >> borne;
+  cout << "Quelle est la capacité du véhicule ? "; cin >> capacite;
+  cout << "Le temps de recharge est estimé à : "<< calculerTempsRecharge(capacite,puissances[borne-1]) 
+    << " min. \n";
 
   return 0;
 }
